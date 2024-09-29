@@ -125,4 +125,101 @@ input:checked + .slider:before {
 .App {
   min-height: 100vh;
   position: relative;
+  overflow: hidden;
+}
+
+/* Add these new styles */
+.content {
+  transition: opacity 1s ease;
+}
+
+.content.transitioning {
+  opacity: 0;
+}
+
+/* Replace the .cursor-image class with this new .custom-cursor class */
+.custom-cursor {
+  position: fixed;
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  pointer-events: none;
+  transform: translate(-50%, -50%); /* Center the image on the cursor */
+  z-index: 9999; /* Ensure it's always on top */
+}
+
+/* Add this new style to hide the default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Ensure smooth transition for video and header */
+.live-video, .App-header {
+  transition: opacity 1s ease;
+}
+
+/* Add a transition to the toggle switch */
+.slider {
+  transition: background-color 0.4s ease;
+}
+
+.slider:before {
+  transition: transform 0.4s ease;
+}
+
+/* Cursor trail styles */
+.cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Kanhaiya mode trail */
+.kanhaiya-trail {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: fadeOutKanhaiya 1.5s linear forwards;
+}
+
+.kanhaiya-trail:nth-child(odd) {
+  background-color: blue;
+}
+
+.kanhaiya-trail:nth-child(even) {
+  background-color: yellow;
+}
+
+@keyframes fadeOutKanhaiya {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+/* Anikait mode trail */
+.anikait-trail {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: fadeOutAnikait 2s linear forwards, sparkle 0.5s linear infinite;
+}
+
+.anikait-trail:nth-child(3n) {
+  background-color: violet;
+}
+
+.anikait-trail:nth-child(3n+1) {
+  background-color: gold;
+}
+
+.anikait-trail:nth-child(3n+2) {
+  background-color: silver;
+}
+
+@keyframes fadeOutAnikait {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
